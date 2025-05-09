@@ -12,7 +12,7 @@ with DAG(
 ) as dag:
     
     @task(task_id="task_using_macros",
-        templates_dict={'start_date':'{{ (data_interval_end.in_timezone("Asia/Seoul") + macros.dateutil.relativedelta.relativedelta(months=-1)) | ds }}',
+        templates_dict={'start_date':'{{ (data_interval_end.in_timezone("Asia/Seoul") + macros.dateutil.relativedelta.relativedelta(months=-1, day=1)) | ds }}',
             'end_date':'{{ (data_interval_end.in_timezone("Asia/Seoul").replace(day=1) + macros.dateutil.relativedelta.relativedelta(days=-1)) | ds }}'
         }
     )
@@ -24,11 +24,7 @@ with DAG(
             print(start_date)
             print(end_date)
 
-    @task(task_id="task_using_calc",
-        templates_dict={'start_date':'{{ (data_interval_end.in_timezone("Asia/Seoul") + macros.dateutil.relativedelta.relativedelta(days=19)) | ds }}',
-            'end_date':'{{ (data_interval_end.in_timezone("Asia/Seoul") - macros.dateutil.relativedelta.relativedelta(days=14)) | ds }}'
-        }
-    )
+    @task(task_id="task_using_calc")
     def get_datetime_calc(**kwargs):
         from dateutil.relativedelta import relativedelta
 
