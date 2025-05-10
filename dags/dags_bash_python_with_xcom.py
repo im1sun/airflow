@@ -28,7 +28,7 @@ with DAG(
         bash_command="echo $STATUS && echo $DATA && echo $OPTION_CNT ",
     )
 
-    python_push_xcom >> bash_pull
+    python_push_xcom() >> bash_pull
 
     bash_push = BashOperator(
     task_id="bash_push",
@@ -45,4 +45,4 @@ with DAG(
         print("status_value:" + str(status_value))
         print("return_value:" + return_value)
     
-    bash_push >> python_pull_xcom
+    bash_push >> python_pull_xcom()
