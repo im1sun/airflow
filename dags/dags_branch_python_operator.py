@@ -2,7 +2,7 @@ from airflow import DAG
 import datetime
 import pendulum
 from airflow.operators.python import PythonOperator
-import random
+from airflow.operators.python import BranchPythonOperator
 
 
 with DAG(
