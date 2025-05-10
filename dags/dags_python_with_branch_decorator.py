@@ -43,4 +43,5 @@ with DAG(
         op_kwargs={'selected':'C'}
     )
 
-    select_random() >> [task_a,task_b,task_c]
+    branch = select_random()  # Task 객체를 명확히 할당
+    branch >> [task_a, task_b, task_c]
