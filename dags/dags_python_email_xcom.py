@@ -17,6 +17,8 @@ with DAG(
         from random import choice
         return choice(['Success','Fail'])
 
+    result = some_logic()
+
     send_email = EmailOperator(
         task_id="send_email",
         to='onesun8191@gmail.com',
@@ -25,4 +27,4 @@ with DAG(
             {{ ti.xcom_pull(task_ids="something_task") }} 했습니다. <br>'
     )
 
-    some_logic() >> send_email
+    result >> send_email
