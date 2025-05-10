@@ -11,11 +11,12 @@ with DAG(
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Seoul"),
     catchup=False,
 ) as dag:
-    var_value = Variable.get("sample_key")
+    # var_value = Variable.get("sample_key")
 
     bash_var_1 = BashOperator(
     task_id="bash_var_1",
-    bash_command=f"echo variable:{var_value} "    
+    # bash_command=f"echo variable:{var_value} "    
+    bash_command="echo variable:{{var.value.sample_key}} "    
     )
 
     bash_var_2 = BashOperator(
