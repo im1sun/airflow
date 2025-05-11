@@ -3,7 +3,7 @@ import datetime
 import pendulum
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
-from airflow.exception import AirflowException
+from airflow.exceptions import AirflowException
 from airflow.decorators import task
 
 with DAG(
