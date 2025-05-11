@@ -4,6 +4,7 @@ import pendulum
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.exception import AirflowException
+from airflow.decorators import task
 
 with DAG(
     dag_id="dags_python_with_trigger_rule_eg2",
@@ -26,7 +27,7 @@ with DAG(
     
     task_a = BashOperator(
         task_id='task_a',
-        bash_commnad='echo upstream1'
+        bash_command='echo upstream1'
     )
 
     @task(task_id='task_b')
