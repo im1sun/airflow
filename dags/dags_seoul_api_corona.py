@@ -14,8 +14,8 @@ with DAG(
     
     tb_cctv_info = SeoulApiToCsvOperator(
         task_id="tb_cctv_info",
-        dataset_nm = 'TbOpendataFixedcctvSP',
-        path='/opt/airflow/files/TbOpendataFixedcctvSP/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}',
+        dataset_nm='TbOpendataFixedcctvSP',
+        path='/opt/airflow/files/TbOpendataFixedcctvSP/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}',
         file_name='TbOpendataFixedcctvSP.csv'
     )
 
@@ -28,4 +28,4 @@ with DAG(
     #     file_name='TbCctvCountStatus.csv'
     # )
 
-    SeoulApiToCsvOperator
+    tb_cctv_info
