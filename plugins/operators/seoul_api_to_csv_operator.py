@@ -57,6 +57,7 @@ class SeoulApiToCsvOperator(BaseOperator):
 
         try:
             contents = json.loads(response.text)
+            print("<<<<<<<<<<<<<<<",contents)
             key_nm = list(contents.keys())[0]
             rows = contents[key_nm].get('row', [])
             return pd.DataFrame(rows)
