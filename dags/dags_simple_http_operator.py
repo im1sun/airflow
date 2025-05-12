@@ -21,7 +21,7 @@ with DAG(
     tb_cctv_info = HttpOperator(
         task_id="tb_cctv_info",
         http_conn_id="openapi.seoul.go.kr",
-        endpoint={{var.value.apikey_openapi_seoul_go_kr}}/json/TbOpendataFixedcctvSP/1/15/,
+        endpoint='{{var.value.apikey_openapi_seoul_go_kr}}/json/TbOpendataFixedcctvSP/1/15/',
         method='GET',
         headers={'Content-Type': 'application/json',
                     'charset': 'utf-8',
@@ -32,7 +32,7 @@ with DAG(
     @task(task_id='python_2')
     def python_2(**kwargs):
         ti = kwargs['ti']
-        ti.xcom_pull(task_ids='tb_cctv_info')
+        rslt = ti.xcom_pull(task_ids='tb_cctv_info')
         import json
         from pprint import pprint
 
