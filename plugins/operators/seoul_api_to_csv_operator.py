@@ -10,7 +10,7 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.path = path
         self.file_name = file_name
-        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/TbOpendataFixedcctvSP/1/15/'
+        self.endpoint = '6145736846656d753639425548776e/json/TbOpendataFixedcctvSP/1/15/'
         self.base_dt = base_dt
 
     def execute(self, context):
