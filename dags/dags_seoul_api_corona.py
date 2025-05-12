@@ -19,13 +19,13 @@ with DAG(
         file_name='TbCctvCountStatus.csv'
     )
 
-    '''서울시 송파구 CCTV 장소 정보'''
+    # '''서울시 송파구 CCTV 장소 정보'''
     
-    tb_cctv_info = SeoulApiToCsvOperator(
-        task_id="tb_cctv_info",
-        dataset_nm = 'TbCctvCountStatus',
-        path='/opt/airflow/files/TbCctvCountStatus/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}',
-        file_name='TbCctvCountStatus.csv'
-    )
+    # tb_cctv_info = SeoulApiToCsvOperator2(
+    #     task_id="tb_cctv_info",
+    #     dataset_nm = 'TbCctvCountStatus',
+    #     path='/opt/airflow/files/TbCctvCountStatus/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}',
+    #     file_name='TbCctvCountStatus.csv'
+    # )
 
-    SeoulApiToCsvOperator >> SeoulApiToCsvOperator
+    SeoulApiToCsvOperator
