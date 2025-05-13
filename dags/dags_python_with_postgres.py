@@ -17,7 +17,7 @@ with DAG(
         from contextlib import closing
 
         # with closing(psycopg2.connect(host=ip, dbname=dbname, user=user, password=passwd, port=int(port))) as conn:
-        with closing(psycopg2.connect(host="emuce-postgres-custom-1", dbname="emuce", user="emuce", password="emuce", port=5432)) as conn:
+        with closing(psycopg2.connect(host="172.28.0.3", dbname="emuce", user="emuce", password="emuce", port=5432)) as conn:
             print("<<<<<<<<<<<<<<<<<<<<<<")
             with closing(conn.cursor()) as cursor:
 
