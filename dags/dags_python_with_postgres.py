@@ -16,7 +16,8 @@ with DAG(
         import psycopg2
         from contextlib import closing
 
-        with closing(psycopg2.connect(host=ip, dbname=dbname, user=user, password=passwd, port=int(port))) as conn:
+        # with closing(psycopg2.connect(host=ip, dbname=dbname, user=user, password=passwd, port=int(port))) as conn:
+        with closing(psycopg2.connect(host="172.28.0.3", dbname="emuce", user="emuce", password="emuce", port=5432)) as conn:
             with closing(conn.cursor()) as cursor:
                 dag_id = kwargs.get('ti').dag_id
                 task_id = kwargs.get('ti').task_id
