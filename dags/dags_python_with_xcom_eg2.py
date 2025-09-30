@@ -29,4 +29,4 @@ with DAG(
     pull_task_2 = xcom_pull_2(push_task)
 
     # 의존성 정의
-    push_task >> pull_task_1
+    push_task >> [pull_task_1, pull_task_2]
