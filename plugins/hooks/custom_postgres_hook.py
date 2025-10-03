@@ -26,8 +26,7 @@ class CustomPostgresHook(BaseHook):
         self.get_conn()
         header = 0 if is_header else None                       # is_header = True면 0, False면 None
         if_exists = 'replace' if is_replace else 'append'       # is_replace = True면 replace, False면 append
-        file_df = pd.read_csv(file_name, header=header, sep='\t\s+',  # 탭 + 1개 이상의 스페이스
-        engine='python'  # 정규표현식 사용 위해 필요)
+        file_df = pd.read_csv(file_name, header=header, sep='\t\s+', engine='python')
 
         for col in file_df.columns:                             
             try:
