@@ -40,6 +40,17 @@ class SeoulApiToCsvOperator(BaseOperator):
         os.makedirs(self.path, exist_ok=True)
         total_row_df.to_csv(f"{self.path}/{self.file_name}", encoding='utf-8', index=False)
 
+        # 저장 전 로그 추가
+        self.log.info(f"===== 저장 경로: {self.path} =====")
+        self.log.info(f"===== 파일명: {self.file_name} =====")
+        self.log.info(f"===== 전체 경로: {self.path}/{self.file_name} =====")
+        
+        os.makedirs(self.path, exist_ok=True)
+        total_row_df.to_csv(f"{self.path}/{self.file_name}", encoding='utf-8', index=False)
+        
+        # 저장 후 확인
+        self.log.info(f"===== 파일 존재 여부: {os.path.exists(f'{self.path}/{self.file_name}')} =====")
+
     def call_api(self, base_url, start_row, end_row):
         import requests
         import json
