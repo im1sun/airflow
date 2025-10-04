@@ -13,7 +13,7 @@ with DAG(
 
     sensor_task_by_poke = BashSensor(
         task_id='sensor_task_by_poke',
-        env={'FILE':'/opt/airflow/files/tvCorona19VaccinestatNew/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/tvCorona19VaccinestatNew.csv'},
+        env={'FILE':'/opt/airflow/files/TbOpendataFixedcctvSP/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/TbOpendataFixedcctvSP.csv'},
         bash_command=f'''echo $FILE && 
                         if [ -f $FILE ]; then 
                               exit 0
