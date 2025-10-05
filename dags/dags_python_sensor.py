@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.sensors.python import PythonSensor
 import pendulum
+from datetime import datetime
 from airflow.hooks.base import BaseHook
 
 with DAG(
@@ -12,7 +13,6 @@ with DAG(
     def check_api_update(http_conn_id, endpoint, base_dt_col, **kwargs):
         import requests
         import json
-        import datetime
         from dateutil import relativedelta
         connection = BaseHook.get_connection(http_conn_id)
         url = f'http://{connection.host}:{connection.port}/{endpoint}/1/5'
