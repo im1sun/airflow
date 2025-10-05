@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.sensors.python import PythonSensor
 import pendulum
-from datetime import datetime
+from datetime import datetime, timedelta
 from airflow.hooks.base import BaseHook
 
 with DAG(
